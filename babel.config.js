@@ -2,12 +2,17 @@ module.exports = function(api) {
  // api.cache.using(() => process.env.NODE_ENV);
   const isTest = api.env('test');
   return {
-    plugins: [],
+    plugins: [
+      ["@babel/plugin-proposal-decorators", {legacy: true}],
+    ],
     presets: [
       [
         "@babel/env",
         {
-          corejs: 3,
+          debug: true,
+          corejs: {
+            version: 3, proposals: true,
+          },
           modules:  isTest ? "commonjs" :  false,
           targets: {
             node: "current"
