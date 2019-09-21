@@ -4,7 +4,9 @@
   "description": "Core of ways of history ",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest"
+    "e2e": "jest --config jest.e2e.config.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
