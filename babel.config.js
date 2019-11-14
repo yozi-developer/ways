@@ -15,7 +15,7 @@ module.exports = function(api) {
           },
           modules:  isTest ? "commonjs" :  false,
           targets: {
-            node: "11"
+            node: "12"
           },
           useBuiltIns: "usage"
         }
