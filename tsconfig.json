@@ -3,19 +3,16 @@
     "allowJs": false,
     "baseUrl": ".",
     "moduleResolution": "node",
-    "incremental": true,
     "target": "ESNEXT",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "sourceMap": true,
     "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
     "isolatedModules": true,
     "strict": true,
     "importHelpers": true,
     "module": "esnext"
   },
   "include": [
-    "./src"
+    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules"
