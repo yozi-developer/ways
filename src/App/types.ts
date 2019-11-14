@@ -1,3 +1,3 @@
-export interface IApp {
+export interface App {
   signIn(): void;
 }

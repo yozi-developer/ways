@@ -20,6 +20,11 @@
     "@typescript-eslint"
   ],
   "rules": {
+    /**
+      Well, it would be greate to have interface names like "...able" without the I prefix.
+       But we would like to have `AppService implements IApiService` in the same time
+     */
+    "@typescript-eslint/interface-name-prefix": 0,
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/explicit-function-return-type": [
       "warn",

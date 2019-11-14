@@ -1,5 +1,6 @@
 import { Token, TokenType } from "inversify-token";
-import { ApiService } from "../services/Api/types";
+import { App } from "../App/types";
 
-export const ApiServiceToken = new Token<ApiService>(Symbol("ApiService"));
-export type ApiServiceToken = TokenType<typeof ApiServiceToken>;
+const AppToken = new Token<App>(Symbol("App"));
+type AppToken = TokenType<typeof AppToken>;
+
