@@ -1,8 +1,12 @@
 import { combineEpics } from "redux-observable";
 import { combineReducers } from "redux";
-import worldState from "./worldState";
+import locations from "./locations";
+import player from "./player";
+import world from "./worldState";
 
 export const rootEpic = combineEpics();
 export const rootReducer = combineReducers({
-  worldState
+  locations,
+  player,
+  world,
 });
