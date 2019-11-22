@@ -2,7 +2,7 @@ import { INC_DAY } from "./actions";
 import { Action, Reducer } from "redux";
 
 export interface WorldState {
-  day: number;
+    day: number;
 }
 
 export interface IncDayAction extends Action<typeof INC_DAY> {}
