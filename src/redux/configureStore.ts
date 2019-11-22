@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, Store } from "redux";
+import { createStore, applyMiddleware, Store, Reducer } from "redux";
 import { createEpicMiddleware } from "redux-observable";
 import { rootEpic, rootReducer } from "./modules/root";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -19,3 +19,6 @@ export default function configureStore(): Store {
 
   return store;
 }
+
+type extractGeneric<Type> = Type extends Reducer<infer X> ? X : never;
+export type StoreState = extractGeneric<typeof rootReducer>;
