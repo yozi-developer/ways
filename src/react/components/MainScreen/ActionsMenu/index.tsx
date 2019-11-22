@@ -1,30 +1,24 @@
-import React, { FC } from "react";
-import { StoreState } from "../../../../redux/configureStore";
+import React, { FC, useCallback } from "react";
 import { incDay } from "../../../../redux/modules/worldState/actions";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
-interface OwnProps {
+interface ActionsMenuProps {
   className?: string;
 }
-const mapStateToProps = (state: StoreState, ownProps: OwnProps) => {
-  return {};
-};
 
-const mapDispatchToProps = { incDay };
-type Actions = typeof mapDispatchToProps;
-interface ActionsMenuProps extends OwnProps, Actions {}
-
-export const ActionsMenu: FC<ActionsMenuProps> = props => {
+const ActionsMenu: FC<ActionsMenuProps> = props => {
+  const dispatch = useDispatch();
+  const onIncDay = useCallback(() => dispatch(incDay()), [dispatch]);
   return (
     <ul className={props.className}>
       <li>
         <button onClick={() => alert("Not implemented")}>Выйти из дома</button>
       </li>
       <li>
-        <button onClick={props.incDay}>Закончить день</button>
+        <button onClick={onIncDay}>Закончить день</button>
       </li>
     </ul>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ActionsMenu);
+export default ActionsMenu;

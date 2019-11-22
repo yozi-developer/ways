@@ -1,30 +1,17 @@
 import { StoreState } from "../../../../redux/configureStore";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import React, { FC } from "react";
 
-interface MappedState {
-  day: number;
-}
-const mapStateToProps = (
-  state: StoreState,
-  ownProps: HeaderOwnProps
-): MappedState => {
-  return {
-    day: state.worldState.day
-  };
-};
-
-interface HeaderOwnProps {
+interface HeaderProps {
   className?: string;
 }
-interface HeaderProps extends MappedState, HeaderOwnProps {}
 
-export const Header: FC<HeaderProps> = props => {
+const Header: FC<HeaderProps> = props => {
+  const day = useSelector((state: StoreState) => state.worldState.day);
   return (
     <header className={props.className}>
-      <div>День: {props.day}</div>
+      <div>День: {day}</div>
     </header>
   );
 };
-
-export default connect(mapStateToProps)(Header);
+export default Header;
