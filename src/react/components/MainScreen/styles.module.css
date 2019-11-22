@@ -1,0 +1,25 @@
+.container {
+    display: grid;
+    grid-template-rows: 50px auto;
+    grid-template-columns: auto minmax(200px, 20%);
+    min-height: 100%;
+    grid-template-areas: "header    sidebar"
+                         "body      sidebar";
+}
+
+.header {
+    grid-area: header;
+    border: 1px black solid;
+    display: flex;
+    align-items: center;
+}
+
+.body {
+    grid-area: body;
+    border: 1px black solid;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    border: 1px black solid;
+}
