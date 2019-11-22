@@ -4,5 +4,5 @@ import worldState from "./worldState";
 
 export const rootEpic = combineEpics();
 export const rootReducer = combineReducers({
-  worldState
+    worldState
 });
