@@ -16,10 +16,14 @@ interface ActionsMenuProps extends OwnProps, Actions {}
 
 export const ActionsMenu: FC<ActionsMenuProps> = props => {
   return (
-    <div className={props.className}>
-      ActionsMenu
-      <button onClick={props.incDay}>Закончить день</button>
-    </div>
+    <ul className={props.className}>
+      <li>
+        <button onClick={() => alert("Not implemented")}>Выйти из дома</button>
+      </li>
+      <li>
+        <button onClick={props.incDay}>Закончить день</button>
+      </li>
+    </ul>
   );
 };
 
