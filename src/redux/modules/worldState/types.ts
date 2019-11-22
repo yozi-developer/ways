@@ -1,8 +1,9 @@
-import { INC_DAY } from "./actions";
 import { Action, Reducer } from "redux";
 
+export const INC_DAY = "INC_DAY" as const;
+
 export interface WorldState {
-    day: number;
+  day: number;
 }
 
 export interface IncDayAction extends Action<typeof INC_DAY> {}

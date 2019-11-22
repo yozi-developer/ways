@@ -1,6 +1,4 @@
-import { IncDayAction } from "./types";
-
-export const INC_DAY = "INC_DAY" as const;
+import { INC_DAY, IncDayAction } from "./types";
 
 export function incDay(): IncDayAction {
   return {
