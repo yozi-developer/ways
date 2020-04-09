@@ -1,8 +1,6 @@
 import React, { ReactElement, useCallback } from "react";
-import { worldSlice } from "src/redux/modules/worldState";
 import { connect } from "react-redux";
-import { Locations } from "src/redux/modules/locations/types";
-import { playerSlice } from "src/redux/modules/player";
+import { worldSlice, playerSlice, locationsTypes } from "src/redux/modules";
 
 interface ActionsMenuProps {
   className?: string;
@@ -10,19 +8,20 @@ interface ActionsMenuProps {
 
 const mapDispatchToProps = {
   incDay: () => worldSlice.actions.incDay(),
-  setLocation: (locationKey: Locations) =>
+  setLocation: (locationKey: locationsTypes.Locations) =>
     playerSlice.actions.setLocation({ locationKey }),
 };
 
 interface ActionsMenuProps {
   incDay: () => void;
-  setLocation: (location: Locations) => void;
+  setLocation: (location: locationsTypes.Locations) => void;
 }
 export const ActionsMenu = (props: ActionsMenuProps): ReactElement => {
   const { incDay, setLocation } = props;
-  const onQuitFromHome = useCallback(() => setLocation(Locations.DownTown), [
-    setLocation,
-  ]);
+  const onQuitFromHome = useCallback(
+    () => setLocation(locationsTypes.Locations.DownTown),
+    [setLocation]
+  );
   return (
     <ul className={props.className}>
       <li>

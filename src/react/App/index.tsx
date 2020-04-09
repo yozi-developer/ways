@@ -1,15 +1,12 @@
-import React, { FC } from "react";
-import { Provider } from "react-redux";
-import MainScreen from "../components/MainScreen";
-import configureStore from "../../redux/configureStore";
+import React, { ReactElement } from "react";
+import AppBody from "./AppBody";
+import StoreProvider from "./StoreProvider";
 
-const store = configureStore();
-
-const App: FC = () => {
+const App = (): ReactElement => {
   return (
-    <Provider store={store}>
-      <MainScreen />
-    </Provider>
+    <StoreProvider>
+      <AppBody />
+    </StoreProvider>
   );
 };
 

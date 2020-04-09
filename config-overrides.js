@@ -1,3 +1,6 @@
-const { override } = require("customize-cra");
+const { override, addBabelPlugin, addExternalBabelPlugin } = require("customize-cra");
 
-module.exports = override();
+module.exports = override(
+  addBabelPlugin("react-hot-loader/babel"),
+  addExternalBabelPlugin("react-hot-loader/babel")
+);

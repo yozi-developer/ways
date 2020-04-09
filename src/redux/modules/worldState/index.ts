@@ -1,3 +1,3 @@
 import slice from "./slice";
-
-export { slice, slice as worldSlice };
+import * as worldStateTypes from "./types";
+export { slice, slice as worldSlice, worldStateTypes };
