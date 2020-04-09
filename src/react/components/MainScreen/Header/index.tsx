@@ -1,8 +1,8 @@
-import { StoreState } from "../../../../redux/configureStore";
+import { StoreState } from "src/redux/configureStore";
 import { useSelector } from "react-redux";
 import React, { FC } from "react";
 import { createSelector } from "reselect";
-import { locations } from "../../../../redux/modules/locations/list";
+import { locations } from "src/redux/modules/locations/list";
 
 interface HeaderProps {
   className?: string;
@@ -13,7 +13,7 @@ const selectLocation = createSelector(
   ({ locations, locationKey }) => locations[locationKey]
 );
 
-const Header: FC<HeaderProps> = props => {
+const Header: FC<HeaderProps> = (props) => {
   const day = useSelector((state: StoreState) => state.world.day);
   const location = useSelector(selectLocation);
   return (

@@ -1,24 +1,34 @@
-import { createStore, applyMiddleware, Store, Reducer } from "redux";
-import { createEpicMiddleware } from "redux-observable";
-import { rootEpic, rootReducer } from "./modules/root";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { combineReducers, Store } from "redux";
+import { combineEpics, createEpicMiddleware } from "redux-observable";
+import { locationsSlice } from "src/redux/modules/locations";
+import { playerSlice } from "src/redux/modules/player";
+import { worldSlice } from "src/redux/modules/worldState";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { ReducersStateType } from "./helpers";
 
-const epicMiddleware = createEpicMiddleware();
+export const rootEpic = combineEpics();
+const reducers = {
+  locations: locationsSlice.reducer,
+  player: playerSlice.reducer,
+  world: worldSlice.reducer,
+};
+const rootReducer = combineReducers(reducers);
 
-const composeEnhancers = composeWithDevTools({
-  // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+const customizedDefaultMiddleware = getDefaultMiddleware({
+  thunk: false,
 });
 
-export default function configureStore(): Store {
-  const store = createStore(
-    rootReducer,
-    composeEnhancers(applyMiddleware(epicMiddleware))
-  );
+export type StoreState = ReducersStateType<typeof reducers>;
+const epicMiddleware = createEpicMiddleware();
+
+export default function createStore(): Store {
+  const store: Store<StoreState> = configureStore({
+    devTools: process.env.NODE_ENV !== "production",
+    middleware: [...customizedDefaultMiddleware, epicMiddleware],
+    reducer: rootReducer,
+  });
 
   epicMiddleware.run(rootEpic);
 
-  return store;
+  return store as Store<StoreState, any>;
 }
-
-type extractGeneric<Type> = Type extends Reducer<infer X> ? X : never;
-export type StoreState = extractGeneric<typeof rootReducer>;

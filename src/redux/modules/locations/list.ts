@@ -2,14 +2,14 @@ import { GameLocation } from "../../types";
 import { Locations } from "./types";
 
 const Home: GameLocation = {
-  name: "Home"
+  name: "Home",
 };
 
 const DownTown: GameLocation = {
-  name: "DownTown"
+  name: "DownTown",
 };
 
 export const locations = {
   [Locations.Home]: Home,
-  [Locations.DownTown]: DownTown
+  [Locations.DownTown]: DownTown,
 };
