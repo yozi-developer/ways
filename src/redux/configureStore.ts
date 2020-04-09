@@ -23,11 +23,14 @@ epicMiddleware.run(rootEpic);
 
 store.replaceReducer(combineReducers(reducers));
 // @ts-ignore
-module.hot.accept("./modules", () => {
-  const reducers = require("./modules").default;
-  const newRootReducer = combineReducers(reducers);
-  store.replaceReducer(newRootReducer as any);
-});
+if (module.hot) {
+  // @ts-ignore
+  module.hot.accept("./modules", () => {
+    const reducers = require("./modules").default;
+    const newRootReducer = combineReducers(reducers);
+    store.replaceReducer(newRootReducer as any);
+  });
+}
 
 export default function createStore(): Store {
   return store as Store<StoreState, any>;
