@@ -1,16 +1,8 @@
-import { locationsSlice, locationsTypes, locations } from "./locations";
-import { playerSlice, playerTypes } from "./player";
-import { worldSlice, worldStateTypes } from "./worldState";
+import { locationsSlice } from "./locations";
+import { playerSlice } from "./player";
+import { worldSlice } from "./worldState";
 
-export {
-  locationsSlice,
-  playerSlice,
-  worldSlice,
-  locationsTypes,
-  playerTypes,
-  worldStateTypes,
-  locations,
-};
+export { locationsSlice, playerSlice, worldSlice };
 
 export default {
   locations: locationsSlice.reducer,

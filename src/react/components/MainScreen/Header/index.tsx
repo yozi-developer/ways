@@ -2,7 +2,7 @@ import { StoreState } from "src/redux/configureStore";
 import { useSelector } from "react-redux";
 import React, { FC } from "react";
 import { createSelector } from "reselect";
-import { locations } from "src/redux/modules";
+import { locations } from "src/redux/modules/locations/list";
 
 interface HeaderProps {
   className?: string;
